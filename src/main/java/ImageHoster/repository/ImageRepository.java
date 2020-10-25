@@ -1,6 +1,8 @@
 package ImageHoster.repository;
 
 import ImageHoster.model.Image;
+import ImageHoster.model.User;
+
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
@@ -109,5 +111,17 @@ public class ImageRepository {
             transaction.rollback();
         }
     }
+    
+    //the method receives the image id for which we need to find the user id 
+    // and the the user details.
+    
+    public User findUserByImageId(Integer imageId) {
+    	
+    	EntityManager em = emf.createEntityManager();
+    	 TypedQuery<Image> typedQuery = em.createQuery("SELECT i from Image i where i.id =:imageId", Image.class).setParameter("imageId", imageId);
+         Image image = typedQuery.getSingleResult();
+    	return image.getUser();
+    }
+
 
 }
