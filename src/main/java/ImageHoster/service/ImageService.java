@@ -1,6 +1,7 @@
 package ImageHoster.service;
 
 import ImageHoster.model.Image;
+import ImageHoster.model.User;
 import ImageHoster.repository.ImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,6 +45,11 @@ public class ImageService {
     //The method calls the deleteImage() method in the Repository and passes the Image id of the image to be deleted in the database
     public void deleteImage(Integer imageId) {
         imageRepository.deleteImage(imageId);
+    }
+  
+    //the method calls the findUserByImageId() method in the repository and passes the Image id of the image for which we need to retrieve the user_id
+    public User findUserByImageId(Integer imageId) {
+    	return imageRepository.findUserByImageId(imageId);
     }
 
 }
