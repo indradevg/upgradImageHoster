@@ -24,7 +24,7 @@ public class CommentController {
 	@Autowired
 	private CommentService commentService;
 	
-	@RequestMapping(path="/image/{imageId}/{imageTitle}/comment",method = RequestMethod.POST)
+	@RequestMapping(path="/image/{imageId}/{imageTitle}/comments",method = RequestMethod.POST)
 	public String uploadComments(@RequestParam("comment") String comment, @PathVariable("imageId") Integer imageId, @PathVariable("imageTitle") String imgTitle, HttpSession session) {
 		
 		// need to get the image and user details from the obtained data
@@ -32,5 +32,6 @@ public class CommentController {
     	Image image = this.imageService.findImageByImageId(imageId);
     	this.commentService.uploadComment(image, comment, user);
     	
-    	return "redirect:/images/"+imageId+"/"+imgTitle;	}
+    	return "redirect:/images/"+imageId+"/"+imgTitle;	
+    	}
 }

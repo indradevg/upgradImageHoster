@@ -50,7 +50,7 @@ public class UserController {
             return "users/registration";
         }
         userService.registerUser(user);
-        return "redirect:/users/login";
+        return "users/login";
     }
 
     //This controller method is called when the request pattern is of type 'users/login'

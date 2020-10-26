@@ -166,13 +166,13 @@ public class ImageController {
      		model.addAttribute("deleteError", error);
      		model.addAttribute("image", image);
      		model.addAttribute("tags", image.getTags());
-         	return "/images/image";
+         	return "redirect:/images";
      	}
     	
     	
     	//incase of current and owner of the image are same then we delete the image and redirect to images   
         imageService.deleteImage(imageId);
-        return "redirect:/images";
+        return "images";
     }
 
 
