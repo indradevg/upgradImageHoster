@@ -27,7 +27,8 @@ public class Comment {
 	@JoinColumn(name="user_id")
 	private User user;
 	
-
+	@ManyToOne
+	@JoinColumn(name = "image_id")
 	private Image image;
 
 	
