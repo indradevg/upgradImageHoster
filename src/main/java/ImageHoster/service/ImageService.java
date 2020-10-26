@@ -52,4 +52,8 @@ public class ImageService {
     	return imageRepository.findUserByImageId(imageId);
     }
 
+    // method calls the findImageByImageId()
+    public Image findImageByImageId(Integer imageId) {
+    	return this.imageRepository.findImageByImageId(imageId);
+    }
 }
