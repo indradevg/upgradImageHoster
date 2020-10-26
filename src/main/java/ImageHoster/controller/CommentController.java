@@ -1,5 +1,7 @@
 package ImageHoster.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,10 +25,10 @@ public class CommentController {
 	private CommentService commentService;
 	
 	@RequestMapping(path="/image/{imageId}/{imageTitle}/comment",method = RequestMethod.POST)
-	public String uploadComments(@RequestParam("comment") String comment, @PathVariable("imageId") Integer imageId, @PathVariable("imageTitle") String imgTitle) {
+	public String uploadComments(@RequestParam("comment") String comment, @PathVariable("imageId") Integer imageId, @PathVariable("imageTitle") String imgTitle, HttpSession session) {
 		
 		// need to get the image and user details from the obtained data
-    	User user = this.imageService.findUserByImageId(imageId);
+    	User user = (User) session.getAttribute("loggeduser");
     	Image image = this.imageService.findImageByImageId(imageId);
     	this.commentService.uploadComment(image, comment, user);
     	
