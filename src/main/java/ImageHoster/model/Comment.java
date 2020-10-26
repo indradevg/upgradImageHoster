@@ -2,15 +2,25 @@ package ImageHoster.model;
 
 import java.sql.Date;
 
+import javax.persistence.*;
+
+
+
+@Entity
+@Table(name="comments")
+
 public class Comment {
 	
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
 	private Integer id ;
 	
 	
+	@Column(name="text",columnDefinition = "TEXT",length = 256)
 	private String text;
 	
-	
+	@Column(name="created_date")
 	private Date createdDate;
 	
 	
