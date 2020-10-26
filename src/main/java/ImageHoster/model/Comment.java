@@ -23,10 +23,11 @@ public class Comment {
 	@Column(name="created_date")
 	private Date createdDate;
 	
-	
+	@ManyToOne
+	@JoinColumn(name="user_id")
 	private User user;
 	
-	
+
 	private Image image;
 
 	
